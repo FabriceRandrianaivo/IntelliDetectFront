@@ -1,10 +1,23 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import {StrictMode} from 'react';;
+import App from './App';
+import { createRoot } from "react-dom/client";
+// import { store } from './store/store';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+const rootElement = document.getElementById("root");
+
+if (rootElement) {
+  const root = createRoot(rootElement); 
+  root.render(
+    <StrictMode>
+      {/* <Provider store={store} > */}
+      {/* <div className='contenair_app'>
+        <div className='filtre_app'> */}
+          <App />
+        {/* </div>
+      </div> */}
+      {/* </Provider> */}
+    </StrictMode>
+  );
+} else {
+  console.error("Élément root non trouvé dans le DOM !");
+}
