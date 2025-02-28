@@ -1,4 +1,4 @@
-import {StrictMode} from 'react';;
+import { StrictMode } from 'react';;
 import App from './App';
 import { createRoot } from "react-dom/client";
 // import { store } from './store/store';
@@ -6,16 +6,10 @@ import { createRoot } from "react-dom/client";
 const rootElement = document.getElementById("root");
 
 if (rootElement) {
-  const root = createRoot(rootElement); 
+  const root = createRoot(rootElement);
   root.render(
     <StrictMode>
-      {/* <Provider store={store} > */}
-      {/* <div className='contenair_app'>
-        <div className='filtre_app'> */}
-          <App />
-        {/* </div>
-      </div> */}
-      {/* </Provider> */}
+      <App />
     </StrictMode>
   );
 } else {

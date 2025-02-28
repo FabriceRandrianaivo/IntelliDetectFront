@@ -1,0 +1,92 @@
+/* App.css */
+
+.app-home {
+    font-family: sans-serif;
+    background-color: #0a192f; /* Exemple de couleur de fond sombre */
+    color: #ccd6f6; /* Exemple de couleur de texte claire */
+    min-height: 100vh;
+  }
+  
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .hero {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .buttons button {
+    padding: 0.8rem 2rem;
+    margin: 0 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .buttons .demo {
+    background-color: #64ffda; /* Exemple de couleur pour le bouton "Try Demo" */
+    color: #0a192f;
+  }
+  
+  .beta {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+  
+  .logos {
+    text-align: center;
+  }
+  
+  .logo-images img {
+    width: 80px; /* Ajustez la taille des logos */
+    margin: 0 1rem;
+  }
+  
+  /* Navbar.css */
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin-left: 1rem;
+  }
+  
+  .nav-links li a {
+    color: #ccd6f6;
+    text-decoration: none;
+  }
+  
+  .auth-buttons button {
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
