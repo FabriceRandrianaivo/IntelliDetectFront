@@ -3,6 +3,11 @@
 @use "../ui/navBar.scss";
 
 
+body{
+  margin: 0;
+  padding: 0;
+}
+
 /* Classe pour le thème clair */
 
 .theme-light {

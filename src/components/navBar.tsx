@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
     return (
       <nav className="navbar">
         <div className="logo">AI Detect</div>
@@ -9,8 +12,8 @@ const Navbar: React.FC = () => {
           <li><a href="#">Pricing</a></li>
         </ul>
         <div className="auth-buttons">
-          <button>Sign up</button>
-          <button>Login</button>
+          <button onClick={()=>navigate("/sign-up")}>Sign up</button>
+          <button onClick={()=>navigate("/login")}>Login</button>
         </div>
       </nav>
     );
