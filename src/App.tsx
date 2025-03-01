@@ -15,15 +15,15 @@ import Login from './pages/login/login.tsx';
 import Signup from './pages/sign-up/signup.tsx';
 // import Detection from './pages/detection/detection.tsx';
 import Streaming from './pages/streaming/streaming.tsx';
-import withAuthRouteRedirect from './components/routeGuards/withAuthRouteRedirect.tsx';
+// import withAuthRouteRedirect from './components/routeGuards/withAuthRouteRedirect.tsx';
 
 
 
 const App: React.FC = () => {
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(true);
   // const token = Cookies.get("user");
-  const LoginWrapper = withAuthRouteRedirect(<Login theme={isDarkTheme} />);
-  const RegisterWrapper = withAuthRouteRedirect(<Signup theme={isDarkTheme} />);
+  // const LoginWrapper = withAuthRouteRedirect(<Login theme={isDarkTheme} />);
+  // const RegisterWrapper = withAuthRouteRedirect(<Signup theme={isDarkTheme} />);
   // const GuestPageWrapper = withAuthRouteRedirect(Outlet);
 
   useEffect(() => {
