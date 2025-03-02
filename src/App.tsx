@@ -15,6 +15,7 @@ import Login from './pages/login/login.tsx';
 import Signup from './pages/sign-up/signup.tsx';
 // import Detection from './pages/detection/detection.tsx';
 import Streaming from './pages/streaming/streaming.tsx';
+import LandingPage from './pages/home/landingPage.tsx';
 // import withAuthRouteRedirect from './components/routeGuards/withAuthRouteRedirect.tsx';
 
 
@@ -39,12 +40,13 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <header className='header-content'>
+      {/* <header className='header-content'> */}
         {/* <TopHeader theme={isDarkTheme} setTheme={setIsDarkTheme} /> */}
-        <Navbar />
-      </header>
+        {/* <Navbar /> */}
+      {/* </header> */}
       <Routes>
       <Route path="/" element={<Home theme={isDarkTheme} />} />
+      <Route path="/landing" element={<LandingPage theme={isDarkTheme} />} />
       <Route path="/login" element={<Login theme={isDarkTheme}/>} />
       <Route path="/sign-up" element={<Signup theme={isDarkTheme}/>} />
         {/* <Route path="/" element={<Root />}> */}
