@@ -1,0 +1,101 @@
+.content-stream{
+    height: 100%;
+    color: black;
+    .ctn-section-top{
+        display: flex;
+        flex-direction: row;
+        height: 68%;
+        width: 100%;
+        margin: 1% 0;
+        .section-str{
+            margin: 0 1% 0 2%;
+            // background: rgba(255, 255, 255, 0.906);
+            background: #22d8f4c4;
+            font-size: small;
+            width: 70%;
+            border-radius: 20px;
+            button{
+                margin: 0 2%;
+            }
+            h2{
+                text-align: center;
+                margin: 1.5%;
+            }
+            .flux-video{
+                margin: 2%;
+                width: 96%;
+                height: 300px;
+                border-radius: 20px;
+            }
+            .no-stream{
+                margin: 2%;
+                text-align: center;
+                border-radius: 20px;
+                width: 96%;
+                height: 300px;
+                background: #00000050;
+            }
+        }
+        .section-search{
+            background: white;
+            text-align: center;
+            font-size: small;
+            margin: 0 2% 0 1%;  
+            width: 24%;
+            border: 2px grey solid;
+            border-radius: 20px;
+            .input-search{
+                color: black;
+                margin: 2%;
+                width: 90%;
+                border-radius: 20px;
+                border: 1px #22D7F4 solid;
+            }
+            .resultat-search{
+                border: 1px #22D7F4 solid;
+                border-radius: 20px;
+                margin: 0 4%;
+                height: 58%;
+                width: 90%;
+            }
+        }
+    }
+    .ctn-section-bottom{
+        display: flex;
+        flex-direction: row;
+        height: 26%;
+        margin: 1.5% 0;
+        .section-use{
+            background: white;
+            text-align: center;
+            font-size: small;
+            margin: 0% 1% 0 2%;
+            border: 2px gray solid;
+            border-radius: 20px;
+            width: 70%;
+            .inference{
+                border: 1px #22D7F4 solid;
+                border-radius: 20px;
+                margin: 0 4%;
+                height: 50%;
+                width: 90%;
+            }
+        }
+        .section-stat{
+            background: white;
+            text-align: center;
+            font-size: small;
+            margin: 0% 2% 0 1%;
+            border: 2px gray solid;
+            border-radius: 20px;
+            width: 24%;
+            .utilisation{
+                border: 1px #22D7F4 solid;
+                border-radius: 20px;
+                margin: 0 4%;
+                height: 50%;
+                width: 90%;
+            }
+        }
+    }
+}

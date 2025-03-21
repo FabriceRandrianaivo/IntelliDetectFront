@@ -1,0 +1,107 @@
+/* Sidebar Styles */
+.sidebar {
+  width: 16rem;
+  transition: background-color 0.3s;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    // width: 18%;
+    background-color: #2d3748;
+    color: #fff;
+    height: 100vh;
+
+.sidebar-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+
+    .titre-site{
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .left-icons{
+      font-size: 24px;
+      // border: 1px white solid;
+      // border-radius: 100px;
+      color: white;
+      font-weight: bold;
+      // padding: 0 1px;
+      position: relative;
+      left: 1.8rem;
+      cursor: pointer;
+      :hover{
+        background-color: gray;
+      }
+    }
+  }
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    // gap: 1rem;
+    padding-left: 1.5rem;
+    .sidebar-nav-item {
+        color: gray;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        font-size: 1rem; /* Taille du texte */
+        border-radius: 0.375rem; /* Coins arrondis */
+        transition: all 0.3s ease;
+        &:hover{
+            background-color: #4a5568;
+        }
+      }
+  }
+  .theme-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    .theme-toggle button {
+        padding: 0.5rem 1rem;
+        background-color: #4a5568;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        color: #fff;
+        transition: background-color 0.3s ease;
+      }
+      
+      .theme-toggle button:hover {
+        background-color: #2d3748; /* Fond plus sombre au survol */
+      }
+      
+      .theme-toggle button:focus {
+        outline: none;
+      }
+      
+      .theme-toggle button:first-child {
+        background-color: #edf2f7; /* Fond clair pour le bouton "Light" */
+        color: #2d3748;
+      }
+      
+      .theme-toggle button:last-child {
+        background-color: #4a5568; /* Fond foncé pour le bouton "Dark" */
+        color: #fff;
+      }
+      
+      .theme-toggle button:nth-child(3) {
+        background-color: #38b2ac; /* Fond coloré pour le bouton "System" */
+        color: #fff;  
+      }
+  }
+}
+.offsidebar{
+  width: 1vw;
+  height: 100vh;
+  cursor: pointer;
+  // z-index: 999999;
+}
+
+
+
+

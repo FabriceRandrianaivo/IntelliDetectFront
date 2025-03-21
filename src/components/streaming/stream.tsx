@@ -1,38 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Cookies from "js-cookie";
 
 const VideoStream: React.FC = () => {
-  const [imageSrc, setImageSrc] = useState<string>("");
+  const token = Cookies.get("user");
+  const [isStreaming, setIsStreaming] = useState<boolean>(false);
+  const [isYolo,setIsYolo] = useState<boolean>(false);
 
-  useEffect(() => {
-    const fetchFrame = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/streal/video_feed", {
-          headers: {
-            Authorization: "Bearer mon_secret_token", // Remplace avec ton vrai token
-          },
-        });
+  // const [error, setError] = useState<string | null>(null);
+  // const [isLoading, setIsLoading] = useState<boolean>(false);
+  const imgRef = useRef<HTMLImageElement | null>(null);
 
-        if (response.ok) {
-          setImageSrc("http://localhost:8000/stream/video_feed");
-        } else {
-          console.error("Requête non autorisée");
-        }
-      } catch (error) {
-        console.error("Erreur de connexion au serveur:", error);
-      }
-    };
+  const handleStartStreaming = () => {
+    setIsStreaming(true);
+    if (imgRef.current) {
+      imgRef.current.src = `http://localhost:8000/stream/video_feed?bearer=${token}`;  // Arrête l'affichage du flux
+    }
+  };
 
-    fetchFrame();
-  }, []);
+  const handleStopStreaming = () => {
+    setIsStreaming(false);
+    if (imgRef.current) {
+      imgRef.current.src = "";  // Arrête l'affichage du flux
+    }
+  };
 
   return (
-    <div>
-      <h2>Détection d'objets avec YOLO</h2>
-      {imageSrc ? (
-        <img src={imageSrc} alt="Video Stream" width="640" />
-      ) : (
-        <p>Chargement du flux...</p>
-      )}
+    <div >
+      <h1>Flux vidéo en direct</h1>
+      <div>
+        <button onClick={handleStartStreaming} disabled={isStreaming}>
+          Démarrer le Streaming
+        </button>
+        <button onClick={handleStopStreaming} disabled={!isStreaming}>
+          Arrêter le Streaming
+        </button>
+      </div>
+      {/* {isLoading && <p>Chargement du flux vidéo...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>} */}
+        <img
+          ref={imgRef}
+          alt="Flux vidéo"
+          style={{ width: "600px", height:"400px", border: "2px solid #333" }}
+        />
     </div>
   );
 };

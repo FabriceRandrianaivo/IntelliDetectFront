@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "../../components/navBar";
+// import Navbar from "../../components/navBar";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/store";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -93,7 +93,7 @@ const Login = (props: headerType) => {
 
     return (
         <div className="login-container">
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="scanner-overlay"></div>
             <div className="login-box">
                 <h2>IntelliDetect Login</h2>

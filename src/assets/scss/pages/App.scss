@@ -3,27 +3,40 @@
 @use "../ui/navBar.scss";
 @use "./login.scss";
 @use "./landingPage.scss";
+@use "./MainLayout.scss";
+@use "./sideBar.scss";
+@use "./stream.scss";
 
-
-body{
+body {
   margin: 0;
   padding: 0;
+  height: 100vh;
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // position: relative;
+  overflow: hidden;
+  // text-align: center;
+  // color: white;
+  background: url("../../images/bg-landingpage.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 /* Classe pour le thème clair */
 
 .theme-light {
-    background-color: white;
+  background-color: transparent;
+  color: black;
+  filter: saturate(50%) blur(70%);
+  li a {
     color: black;
-    li a {
-        color: black;
-    }
   }
-  
-  .theme-dark {
-    background-color: black;
+}
+
+.theme-dark {
+  background-color: transparent;
+  color: white;
+  li a {
     color: white;
-    li a {
-        color: white;
-    }
   }
+}

@@ -1,0 +1,15 @@
+.m-app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  .m-principle {
+    // overflow-y: auto;
+    // scrollbar-width: thin;
+    // scroll-behavior: smooth;
+    // scrollbar-color: grey;
+    width: 99vw;
+    height: 100vh;
+    flex: 1;
+    background-color: transparent;
+  }
+}
