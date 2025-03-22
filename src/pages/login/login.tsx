@@ -1,4 +1,5 @@
-import Navbar from "../../components/navBar";
+import { CgProfile } from "react-icons/cg";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 interface headerType {
     theme: boolean;
@@ -8,21 +9,22 @@ const Login = (props: headerType) => {
 
     return (
         <div className="login-container">
-            <Navbar />
             <div className="scanner-overlay"></div>
             <div className="login-box">
-                <h2>IntelliDetect Login</h2>
-                <form>
-                    <div className="input-group">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" id="username" placeholder="Enter your username" />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id="password" placeholder="Enter your password" />
-                    </div>
-                    <button type="submit" className="login-button">Login</button>
-                </form>
+                <div className="login">
+                    <h2>LOGIN</h2>
+                    <form>
+                        <div className="input-group">
+                            <input type="text" id="username" placeholder="Username"/>
+                            <CgProfile className="icon"/>
+                        </div>
+                        <div className="input-group">
+                            <input  type="password" id="password" placeholder="Password" />
+                            <RiLockPasswordLine className="icone"/>
+                        </div>
+                        <button type="submit" className="login-button">Login</button>              
+                    </form>
+                </div>
             </div>
         </div>
     );

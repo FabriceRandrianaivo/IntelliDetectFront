@@ -1,3 +1,4 @@
+import Navbar from "../../components/navBar";
 interface headerType {
   theme: boolean;
   // setTheme: (theme: boolean) => void;
@@ -5,6 +6,7 @@ interface headerType {
 const Home = (props: headerType) => {
   return (
     <div className="app-home">
+    <Navbar/>
       <div className="content">
         <div className="hero">
           <h1>Protect Your App Against Non-Humans</h1>
