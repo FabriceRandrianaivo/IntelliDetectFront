@@ -1,5 +1,6 @@
 import { useState } from "react";
-// import Navbar from "../../components/navBar";
+import { CgProfile } from "react-icons/cg";
+import { RiLockPasswordLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/store";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -60,7 +61,7 @@ const Login = (props: headerType) => {
                     //     headers: {
                     //         Authorization: `Bearer ${token}`,
                     //     },
-                
+
                     //     async onopen(response) {
                     //         if (response.ok) {
                     //             dispatch(setOpen(true));
@@ -88,7 +89,7 @@ const Login = (props: headerType) => {
         } else {
             setErrorMessage("Veuillez entrer un email et un mot de passe valides.");
         }
-    };  
+    };
 
 
     return (
@@ -96,36 +97,41 @@ const Login = (props: headerType) => {
             {/* <Navbar /> */}
             <div className="scanner-overlay"></div>
             <div className="login-box">
-                <h2>IntelliDetect Login</h2>
+                {/* <h2>IntelliDetect Login</h2> */}
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
-                <form onSubmit={handleLogin}>
-                    <div className="input-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="Enter your mail"
-                            value={email}
-                            onChange={(e) => {
-                                setEmail(e.target.value);
-                                validateEmail(e.target.value);
-                            }}
-                        />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Enter your password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <button type="submit" className="login-button" disabled={showLoading}>
-                        {showLoading ? "Connexion..." : "Login"}
-                    </button>
-                </form>
+                <div className="login">
+                    <h2>LOGIN</h2>
+                    <form onSubmit={handleLogin}>
+                        <div className="input-group">
+                            {/* <label htmlFor="email">Email</label> */}
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Enter your mail"
+                                value={email}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    validateEmail(e.target.value);
+                                }}
+                            />
+                            <CgProfile className="icon" />
+                        </div>
+                        <div className="input-group">
+                            {/* <label htmlFor="password">Password</label> */}
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Enter your password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <RiLockPasswordLine className="icone" />
+                        </div>
+                        <button type="submit" className="login-button" disabled={showLoading}>
+                            {showLoading ? "Connexion..." : "Login"}
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     );

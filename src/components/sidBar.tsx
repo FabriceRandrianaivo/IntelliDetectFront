@@ -8,9 +8,9 @@ import LayersIcon from '@mui/icons-material/Layers';
 const navItems = [
   { name: "Home", href: "/home", icon: <Home /> },
   { name: "Collection", href: "/collection", icon: <Collections /> },
-  { name: "IP List", href: "/", icon: <Storage /> },
+  { name: "IP List", href: "/collection?/ip-list", icon: <Storage /> },
   { name: "Stream", href: "/stream", icon: <Videocam /> },
-  { name: "Detection", href: "/", icon: <Visibility /> },
+  { name: "Detection", href: "/Detection", icon: <Visibility /> },
 ];
 
 const navItemsFunct = [

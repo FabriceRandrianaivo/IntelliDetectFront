@@ -1,3 +1,4 @@
+import Navbar from "../../components/navBar";
 interface headerType {
   theme: boolean;
   // setTheme: (theme: boolean) => void;

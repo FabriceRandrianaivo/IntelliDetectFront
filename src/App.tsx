@@ -12,13 +12,14 @@ import './assets/scss/pages/App.scss';
 import Home from './pages/home/home.tsx';
 import Login from './pages/login/login.tsx';
 import Signup from './pages/sign-up/signup.tsx';
-// import Detection from './pages/detection/detection.tsx';
+import Detection from './pages/detection/detection.tsx';
 import Streaming from './pages/streaming/streaming.tsx';
 import LandingPage from './pages/home/landingPage.tsx';
 import Collection from './pages/collection/collection.tsx';
 import Root from './pages/Root.tsx';
 import withAuthRouteRedirect from './components/routeGuards/withAuthRouteRedirect.tsx';
-import MainLayout, { ProtectedRoute } from './mainLayout.tsx';
+import MainLayout, { ProtectedRoute } from './MainLayout.tsx';
+import Ip_list from './pages/ip-list/ip-list.tsx';
 
 
 
@@ -76,8 +77,10 @@ const App: React.FC = () => {
             <Route path="home" element={<Home theme />} />
             <Route path="*" element={<MainLayout />}>
               <Route path="stream" element={<Streaming theme />} />
-              <Route path="collection" element={<Collection />} />
-              {/* <Route path="camera/:IpCam?" element={<Streaming theme/>}
+              <Route path="collection" element={<Collection />}/>
+              <Route path="detection" element={<Detection />} />
+              <Route path="ip-list" element={<Ip_list />}/>
+              {/* <Route path="camera/:IpCam?" element={<Ip_list />}
             /> */}
 
             </Route>
