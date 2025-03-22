@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { Home, Collections, Storage, Videocam, Visibility, ExitToApp } from "@mui/icons-material";
+import LayersIcon from '@mui/icons-material/Layers';
 
 const navItems = [
   { name: "Home", href: "/home", icon: <Home /> },
@@ -13,7 +14,7 @@ const navItems = [
 ];
 
 const navItemsFunct = [
-  { name: "IntelliDetect", href: "/landing", icon: <Home /> },
+  { name: "IntelliDetect", href: "/landing", icon: <LayersIcon /> },
   { name: "Logout", href: "/logout", icon: <ExitToApp /> },
 ];
 
