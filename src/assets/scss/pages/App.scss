@@ -1,11 +1,15 @@
-// @use "./topHeader.scss";
-@use "./home.scss";
-@use "../ui/navBar.scss";
-@use "./login.scss";
-@use "./landingPage.scss";
-@use "./MainLayout.scss";
-@use "./sideBar.scss";
-@use "./stream.scss";
+// @import "./topHeader.scss";
+@import "./variables";
+@import "./layout";
+@import "./home.scss";
+@import "../ui/navBar.scss";
+@import "./login.scss";
+@import "./landingPage.scss";
+@import "./MainLayout.scss";
+@import "./sideBar.scss";
+@import "./stream.scss";
+@import "./collection.scss";
+
 
 body {
   margin: 0;
@@ -39,4 +43,9 @@ body {
   li a {
     color: white;
   }
+}
+
+.b-heading {
+  border-bottom: 1px solid black;
+  padding-bottom: 6px;
 }
