@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { AuthSlice } from "./features/authSlice";
 import { StreamSlice } from "./features/streamSlice";
+import { CollectionSlice } from "./features/collectionSlice";
 
 export const store = configureStore({
   reducer: {
     auth: AuthSlice.reducer,
     stream: StreamSlice.reducer,
+    collection: CollectionSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

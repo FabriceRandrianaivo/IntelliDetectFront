@@ -11,7 +11,7 @@ import React from "react";
 
 function App() {
     const token = Cookies.get("user");
-    const [isOpenBar, setIsOpenBar] = useState<boolean>(true);
+    const [isOpenBar, setIsOpenBar] = useState<boolean>(false);
     return (
         token && (
             <>

@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../store/store";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 import { login, setIsAuthenticated } from "../../store/features/authSlice";
+import { fetchCollection } from "../../store/features/collectionSlice";
 
 interface userDetailObject {
     f_Name: string;
@@ -79,7 +80,8 @@ const Login = (props: headerType) => {
                     //         console.log("error see: ", error);
                     //     },
                     // });
-                    navigate("/stream");
+                    dispatch(fetchCollection);
+                    navigate("/collection");
                 })
                 .catch((error) => {
                     console.error("Login error:", error);

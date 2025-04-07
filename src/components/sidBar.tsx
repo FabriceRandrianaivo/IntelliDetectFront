@@ -8,7 +8,8 @@ import LayersIcon from '@mui/icons-material/Layers';
 const navItems = [
   { name: "Home", href: "/home", icon: <Home /> },
   { name: "Collection", href: "/collection", icon: <Collections /> },
-  { name: "IP List", href: "/collection?/ip-list", icon: <Storage /> },
+  // { name: "IP List", href: "/collection?/ip-list", icon: <Storage /> },
+  { name: "IP List", href: "/ip-list", icon: <Storage /> },
   { name: "Stream", href: "/stream", icon: <Videocam /> },
   { name: "Detection", href: "/Detection", icon: <Visibility /> },
 ];
@@ -45,29 +46,31 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpenBar, setIsOpenBar }) => {
         </span>
       </div>
 
-      {/* Menu de navigation */}
-      <List className="sidebar-nav">
-        {navItems.map((item) => (
-          <ListItem key={item.name} disablePadding>
-            <ListItemButton onClick={() => navigate(item.href)}>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              {isOpenBar && <ListItemText primary={item.name} />}
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <div className="content-item-bar">
+        {/* Menu de navigation */}
+        <List className="sidebar-nav">
+          {navItems.map((item) => (
+            <ListItem key={item.name} disablePadding>
+              <ListItemButton onClick={() => navigate(item.href)}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                {isOpenBar && <ListItemText primary={item.name} />}
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
 
-      {/* Bouton Logout */}
-      {logoutItem && (
-        <div className="logout-button" onClick={handleLogout}>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>{logoutItem.icon}</ListItemIcon>
-              {isOpenBar && <ListItemText primary={logoutItem.name} />}
-            </ListItemButton>
-          </ListItem>
-        </div>
-      )}
+        {/* Bouton Logout */}
+        {logoutItem && (
+          <List className="logout-button" onClick={handleLogout}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>{logoutItem.icon}</ListItemIcon>
+                {isOpenBar && <ListItemText primary={logoutItem.name} />}
+              </ListItemButton>
+            </ListItem>
+          </List>
+        )}
+      </div>
     </div>
   );
 };
