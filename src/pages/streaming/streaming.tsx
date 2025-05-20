@@ -19,7 +19,7 @@ const Streaming = (props: headerType) => {
     if (imgRef.current) {
       imgRef.current.src = `http://localhost:8000/stream/video_feed?bearer=${token}`;
     }
-  };
+  }; 
 console.log(imgRef.current );
 
   const handleStopStreaming = () => {

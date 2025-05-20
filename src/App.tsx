@@ -77,7 +77,10 @@ const App: React.FC = () => {
             <Route path="home" element={<Home theme />} />
             <Route path="*" element={<MainLayout />}>
               <Route path="stream" element={<Streaming theme />} />
-              <Route path="collection" element={<Collection />}/>
+              <Route path="collection" 
+                element={<Collection />
+              }
+              />
               <Route path="detection" element={<Detection />} />
               <Route path="ip-list" element={<Ip_list />}/>
               {/* <Route path="camera/:IpCam?" element={<Ip_list />}

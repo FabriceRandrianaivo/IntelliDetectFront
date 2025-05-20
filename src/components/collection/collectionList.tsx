@@ -18,11 +18,14 @@ export function CollectionList() {
       <div className="b_list" >
         {
           collectionList.map((collection, key) => (
-            <div className="b_card-list" key={key} onClick={() => {
-              dispatch(setActiveCollection(collection.collection_name));
-              navigate("/ip-list");
-            }
-            }>
+            <div className="b_card-list" key={key}
+              onClick={(e) => {
+                e.detail === 1 ? dispatch(setActiveCollection(collection.collection_name)) 
+                : 
+                dispatch(setActiveCollection(collection.collection_name))
+                navigate("/ip-list");
+              }
+              }>
               <div className="b_head-card">
                 <h2>{collection.collection_name}</h2>
                 {/* <CircleX /> */}
