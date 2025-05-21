@@ -6,6 +6,7 @@ import HeadSection from "../../components/ui/headSection";
 import { useAppSelector } from "../../store/store";
 
 const Ip_list : React.FC = () => {
+  
   const indexCollectionActive = useAppSelector((state)=> state.collection.activeIndex)
   const collectionItems = useAppSelector((state)=> state.collection.items)
   const collectionActive = collectionItems[indexCollectionActive || 0];

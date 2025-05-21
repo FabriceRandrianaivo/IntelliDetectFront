@@ -5,7 +5,6 @@ import authService from "../../services/authentication/authenticationService";
 import { RootState } from "../store";
 const isCookies = import.meta.env.VITE_IS_COOKIES;
 
-console.log("isCookies", isCookies);
 export interface PayloadCollectionUpload {
   payload: {
     collection_id: string;
@@ -94,6 +93,7 @@ export const fetchCollectionById = createAsyncThunk(
   async (id: string, thunkAPI) => {
     try {
       const response = await authService.get(`/collection/${id}`);
+
       return response.data;
     } catch (error) {
       if (isAxiosError(error)) {
