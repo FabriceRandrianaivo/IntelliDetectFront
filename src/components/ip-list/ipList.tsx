@@ -1,0 +1,123 @@
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { deleteIp, fetchIP, setActiveIp, setActiveIps } from "../../store/features/ipsSlice";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { fetchCollection } from "../../store/features/collectionSlice";
+
+export function IpList() {
+  const activeIndexCollection = useAppSelector((state) => state.collection.activeIndex);
+  const collectionItems = useAppSelector((state) => state.collection.items)
+  const collectionActive = collectionItems[activeIndexCollection ? activeIndexCollection : 0];
+
+  const IpListAddress = useAppSelector((state) => state.ip.items);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+
+  const handleGetCollection = async () => {
+    try {
+      await dispatch(fetchCollection());
+    } catch (e) {
+      console.error("une erreur est suvenue :" + e);
+    }
+  }
+  useEffect(() => {
+    collectionItems.length === 0 && handleGetCollection()
+  }, [])
+
+  useEffect(() => {
+    dispatch(fetchIP(collectionActive.id))
+  }, [])
+
+  useEffect(() => {
+    dispatch(fetchIP(collectionActive.id))
+  }, [activeIndexCollection])
+
+  const getStreamUrl = (ip: string) => {
+    return `http://localhost:8000/stream/from-ip/${ip}`; // ou ton URL déployée
+  };
+
+
+  const handleDeleteIp = (collectionId: string, ipId: string) => {
+    const payload = {
+      collection_id: collectionId,
+      ip_id: ipId
+    }
+    dispatch(deleteIp(payload))
+      .then()
+      .catch((e: any) => {
+        console.error("une erreur est suvenue lors de la suppression :" + e);
+      });
+  }
+
+  return (
+    <div className="b_list">
+      {IpListAddress.length === 0 ? (
+        <div className="b_card-list">
+          Il n'y a pas d'IP dans la collection
+        </div>
+      ) : (
+        IpListAddress.map((ip, key) => (
+          <div
+            className="b_card-list"
+            key={key}
+            onClick={(e) => {
+              if (e.detail === 1) {
+                console.log(ip)
+                dispatch(setActiveIps(ip.ip_address)); // ou `ip.id` selon ton slice
+              } else {
+                dispatch(setActiveIps(ip.ip_address)); // ou `ip.id` selon ton slice
+                navigate("/stream");
+              }
+            }}
+          >
+            <div className="b_head-card">
+              {/* <h2>{ip.ip_address}</h2> */}
+              <div className="ip_content-list">
+                <img src={ip.ip_address} alt={`Camera ${key + 1} erreur`} />
+              </div>
+              {/* <CircleX /> */}
+            </div>
+            <div className="b_content-list">
+              <div className="b_action-list">
+                <div className="b_left">
+                  <p>Modifier</p>
+                </div>
+                <div className="b_right">
+                  <p
+                    onClick={(e) => {
+                      e.stopPropagation();// évite de déclencher onClick du parent
+                      console.log("delete");
+                      const payload = {
+                        collection_id: ip.collection_id,
+                        ip_id: ip.id
+                      }
+                      dispatch(deleteIp(payload)).then(
+                        () => dispatch(fetchIP(collectionActive.id))
+                      )
+                    }}
+                  >
+                    Révoquer
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+        // IpListAddress.map((ip, key) => (
+        //   <>
+        //     <div className="ip_card-list" key={key}>
+        //       <div className="ip_head-card">
+        //         {/* Camera {idx + 1} */}
+        //         {ip.ip_address}
+        //       </div>
+        //       <div className="ip_content-list">
+        //         <img src={ip.ip_address} alt={`Camera ${key + 1}`} />
+        //       </div>
+        //     </div>
+        //   </>
+        // ))
+      )}
+    </div>
+  );
+}
