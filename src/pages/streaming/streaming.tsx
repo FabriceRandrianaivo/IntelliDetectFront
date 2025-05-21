@@ -1,33 +1,43 @@
 import VideoStream from '../../components/streaming/stream';
 import React, { useRef, useState } from "react";
 import Cookies from "js-cookie";
+import { useAppSelector } from '../../store/store';
 interface headerType {
   theme: boolean;
   // setTheme: (theme: boolean) => void;
 }
 const Streaming = (props: headerType) => {
   const token = Cookies.get("user");
-  const [isStreaming, setIsStreaming] = useState<boolean>(false);
+  const activeIpIndex = useAppSelector((state)=> state.ip.activeIpIndex);
+  const itemsIp = useAppSelector((state)=> state.ip.items);
+  const activeIpAddress = itemsIp[activeIpIndex || 0].ip_address;
+  
+
+
+  const [isStreaming, setIsStreaming] = useState<boolean>(true);
   const [isYolo, setIsYolo] = useState<boolean>(false);
 
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const imgRef = useRef<HTMLImageElement | null>(null);
+  const target = ""
 
-  const handleStartStreaming = () => {
-    setIsStreaming(true);
-    if (imgRef.current) {
-      imgRef.current.src = `http://localhost:8000/stream/video_feed?bearer=${token}`;
-    }
-  }; 
+  // const handleStartStreaming = () => {
+  //   setIsStreaming(true);
+  //   if (imgRef.current) {
+  //     // imgRef.current.src = `http://localhost:8000/stream/video_feed?bearer=${token}`;
+  //     imgRef.current.src = `http://localhost:8000/stream/from-ip/${activeIpAddress}/?bearer=${token}`;
+      
+  //   }
+  // }; 
 console.log(imgRef.current );
 
-  const handleStopStreaming = () => {
-    setIsStreaming(false);
-    if (imgRef.current) {
-      imgRef.current.src = "";
-    }
-  };
+  // const handleStopStreaming = () => {
+  //   setIsStreaming(false);
+  //   if (imgRef.current) {
+  //     imgRef.current.src = "";
+  //   }
+  // };
 
   return (
     <div className="content-stream">
@@ -35,28 +45,33 @@ console.log(imgRef.current );
         <section className="section-str">
           <div >
             <h2>Flux vidéo en direct</h2>
-            <div>
+            {/* <div>
               <button onClick={handleStartStreaming} disabled={isStreaming}>
                 Démarrer le Streaming
               </button>
               <button onClick={handleStopStreaming} disabled={!isStreaming}>
                 Arrêter le Streaming
               </button>
-            </div>
+            </div> */}
             {isLoading && <p>Chargement du flux vidéo...</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
-            {isStreaming ?
+            {/* {isStreaming ? */}
               <img
-                ref={imgRef}
-                alt="Flux vidéo"
+                // ref={imgRef}
+                // alt="Flux vidéo"
                 className='flux-video'
+                src={`http://localhost:8000/stream/from-ip/${activeIpAddress}/?bearer=${token}`} 
+                // src={`http://localhost:8000/stream/detect-object/${activeIpAddress}/laptop/?bearer=${token}`} alt={`Camera ${activeIpIndex} erreur`}
+                // src={`http://localhost:8000/stream/smart-detect/${activeIpAddress}/${target ? `?target=${target}&` : '?'}bearer=${token}`}
+
+
               // style={{ width: "600px", height: "400px", border: "2px solid #333" }}
               />
-              :
+              {/* :
               <div className='no-stream'>
                 Attend de video
-              </div>
-            }
+              </div> */}
+            {/* } */}
 
           </div>
         </section>

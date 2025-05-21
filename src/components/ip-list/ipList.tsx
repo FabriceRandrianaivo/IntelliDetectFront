@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { deleteIp, fetchIP, setActiveIp, setActiveIps } from "../../store/features/ipsSlice";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,7 @@ export function IpList() {
   const IpListAddress = useAppSelector((state) => state.ip.items);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const token = Cookies.get("user");
 
 
   const handleGetCollection = async () => {
@@ -34,21 +36,9 @@ export function IpList() {
   }, [activeIndexCollection])
 
   const getStreamUrl = (ip: string) => {
-    return `http://localhost:8000/stream/from-ip/${ip}`; // ou ton URL déployée
+    return `http://localhost:8000/stream/from-ip/${ip}?bearer=${token}`; // ou ton URL déployée
   };
 
-
-  const handleDeleteIp = (collectionId: string, ipId: string) => {
-    const payload = {
-      collection_id: collectionId,
-      ip_id: ipId
-    }
-    dispatch(deleteIp(payload))
-      .then()
-      .catch((e: any) => {
-        console.error("une erreur est suvenue lors de la suppression :" + e);
-      });
-  }
 
   return (
     <div className="b_list">
@@ -64,17 +54,23 @@ export function IpList() {
             onClick={(e) => {
               if (e.detail === 1) {
                 console.log(ip)
-                dispatch(setActiveIps(ip.ip_address)); // ou `ip.id` selon ton slice
+                navigate(`/stream`);
+                // navigate(`/stream/${ip.collection_id}/${ip.id}`);
+                // dispatch(setActiveIps(ip.ip_address)); // ou `ip.id` selon ton slice
               } else {
-                dispatch(setActiveIps(ip.ip_address)); // ou `ip.id` selon ton slice
+                dispatch(setActiveIps(ip.ip_address));
                 navigate("/stream");
               }
             }}
           >
-            <div className="b_head-card">
+            <div className="ip_card-list">
               {/* <h2>{ip.ip_address}</h2> */}
+              <div className="ip_head-card">
+                Camera {key + 1}
+                {/* {ip.ip_address} */}
+              </div>
               <div className="ip_content-list">
-                <img src={ip.ip_address} alt={`Camera ${key + 1} erreur`} />
+                <img src={`http://localhost:8000/stream/from-ip/${ip.ip_address}/?bearer=${token}`} alt={`Camera ${key + 1} erreur`} />  
               </div>
               {/* <CircleX /> */}
             </div>

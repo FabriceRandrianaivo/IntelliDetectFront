@@ -24,7 +24,7 @@ export function IpListAddress() {
 
   const handleCreateIp = (e: React.FormEvent) => {
         e.preventDefault();
-        if (inputUrl.length > 0) {
+        if (inputUrl.trim().length > 0) {
             const credential = {
               payload:{
                 collection_id: collection_id
@@ -35,6 +35,7 @@ export function IpListAddress() {
                 .then(unwrapResult)
                 .then((originalPromiseResult) => {
                     dispatch(fetchIP(collection_id));
+                    setInputUrl("");
                 })
                 .catch((error: any) => {
                     console.error("Login error:", error);
