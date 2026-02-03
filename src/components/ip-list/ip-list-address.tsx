@@ -100,7 +100,8 @@ export function IpListAddress() {
               opacity: 0.8,
             }}
           >
-            // INITIALISATION DU PROTOCOLE DE CONNEXION IP...
+            // INITIALISATION DU PROTOCOLE DE CONNEXION MULTI-PROTOCOLE
+            (IP/URL)...
           </Typography>
 
           <form onSubmit={handleCreateIp}>
@@ -108,7 +109,7 @@ export function IpListAddress() {
               <TextField
                 fullWidth
                 variant="outlined"
-                placeholder="IP_ADDRESS (ex: 192.168.1.50)"
+                placeholder="ADRESSE_IP ou URL_PUBLIQUE (ex: 192.168.1.50 ou https://...) "
                 value={inputUrl}
                 onChange={(e) => setInputUrl(e.target.value)}
                 disabled={loading}

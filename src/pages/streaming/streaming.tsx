@@ -46,10 +46,11 @@ const Streaming: React.FC = () => {
   const getStreamUrl = () => {
     if (!selectedIp) return "";
     const base = `${API_BASE_URL}/stream`;
+    const encodedIp = encodeURIComponent(selectedIp);
     if (target) {
-      return `${base}/detect-object/${selectedIp}/${target}/?bearer=${token}`;
+      return `${base}/detect-object/${encodedIp}/${target}/?bearer=${token}`;
     }
-    return `${base}/from-ip/${selectedIp}/?bearer=${token}`;
+    return `${base}/from-ip/${encodedIp}/?bearer=${token}`;
   };
 
   return (

@@ -100,7 +100,7 @@ export function IpList() {
                 <Box sx={{ position: "relative" }}>
                   <CardMedia
                     component="img"
-                    image={`${API_BASE_URL}/stream/from-ip/${ip.ip_address}/?bearer=${token}`}
+                    image={`${API_BASE_URL}/stream/from-ip/${encodeURIComponent(ip.ip_address)}/?bearer=${token}`}
                     alt={`Caméra ${index + 1}`}
                     sx={{
                       aspectRatio: "16/9",
@@ -197,6 +197,7 @@ export function IpList() {
                           alignItems: "center",
                           gap: 1,
                           fontWeight: 700,
+                          wordBreak: "break-all",
                         }}
                       >
                         <SensorsIcon fontSize="small" /> {ip.ip_address}
