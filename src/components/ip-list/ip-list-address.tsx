@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { IpList } from "./ipList";
 import { useAppDispatch, useAppSelector } from "../../store/store";
+import { RootState } from "../../store/store";
 import { createIp, fetchIP } from "../../store/features/ipsSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 
@@ -10,10 +11,10 @@ export function IpListAddress() {
   const [inputUrl, setInputUrl] = useState("");
   const dispatch = useAppDispatch();
   const collectionIndex = useAppSelector(
-    (state) => state.collection.activeIndex,
+    (state: RootState) => state.collection.activeIndex,
   );
   const collectionItemsActive = useAppSelector(
-    (state) => state.collection.items[collectionIndex || 0],
+    (state: RootState) => state.collection.items[collectionIndex || 0],
   );
   const collection_id = collectionItemsActive.id;
 
