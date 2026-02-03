@@ -48,7 +48,7 @@ const App: React.FC = () => {
             <Route path="landing" element={<LandingPage />} />
             <Route path="home" element={<Home />} />
             <Route element={<MainLayout />}>
-              <Route path="stream" element={<Streaming theme />} />
+              <Route path="stream" element={<Streaming />} />
               <Route path="collection" element={<Collection />} />
               <Route path="detection" element={<Detection />} />
               <Route path="ip-list" element={<Ip_list />} />
