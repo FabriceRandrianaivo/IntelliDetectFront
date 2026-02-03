@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import {
-  BrowserRouter as Router,
+  BrowserRouter as Router, // Change to HashRouter if you cannot configure your server for SPA
   Routes,
   Route,
   Outlet,
@@ -27,8 +27,6 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Root />}>
-          <Route path="*" element={<p>Not Found</p>} />
-
           {/* Public Routes */}
           <Route element={<GuestPageWrapper />}>
             <Route path="login" element={<LoginWrapper />} />
@@ -49,13 +47,16 @@ const App: React.FC = () => {
           >
             <Route path="landing" element={<LandingPage />} />
             <Route path="home" element={<Home />} />
-            <Route path="*" element={<MainLayout />}>
+            <Route element={<MainLayout />}>
               <Route path="stream" element={<Streaming theme />} />
               <Route path="collection" element={<Collection />} />
               <Route path="detection" element={<Detection />} />
               <Route path="ip-list" element={<Ip_list />} />
             </Route>
           </Route>
+
+          {/* Catch-all route MUST be at the end */}
+          <Route path="*" element={<p>Not Found</p>} />
         </Route>
       </Routes>
     </Router>
