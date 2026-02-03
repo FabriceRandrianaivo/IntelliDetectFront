@@ -3,33 +3,36 @@ import Cookies from "js-cookie";
 import SideBar from "./components/sidBar";
 import { useState } from "react";
 import React from "react";
+import { Box } from "@mui/material";
 
 function App() {
-  const [isOpenBar, setIsOpenBar] = useState<boolean>(false);
+  const [isOpenBar, setIsOpenBar] = useState<boolean>(true); // Default to open for more structure
 
   return (
-    <div
-      className="m-app"
-      style={{
+    <Box
+      sx={{
         display: "flex",
-        width: "100vw",
+        width: "100%",
         height: "100vh",
         overflow: "hidden",
+        backgroundColor: "#0a1929",
       }}
     >
       <SideBar isOpenBar={isOpenBar} setIsOpenBar={setIsOpenBar} />
-      <div
-        className="m-principle"
-        style={{
+      <Box
+        component="main"
+        sx={{
           flexGrow: 1,
           height: "100%",
           overflowY: "auto",
-          backgroundColor: "#0a1929",
+          display: "flex",
+          flexDirection: "column",
+          position: "relative",
         }}
       >
         <Outlet />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 

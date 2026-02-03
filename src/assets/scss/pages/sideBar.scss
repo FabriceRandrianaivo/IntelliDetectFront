@@ -1,59 +1,59 @@
 /* Sidebar Styles */
 .sidebar {
-  width: 16rem;
+  width: 280px;
   flex-shrink: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  background: rgba(16, 32, 48, 0.95);
-  backdrop-filter: blur(10px);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(13, 31, 51, 0.8) !important;
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
   color: #fff;
   height: 100vh;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  position: relative;
+  z-index: 1000;
+
   &.closed {
-    width: 3rem;
-    transition: all 0.4s;
-    // flex-shrink: 0;
+    width: 80px;
+    
     .titre-site {
-      display: none;
+      opacity: 0;
+      pointer-events: none;
     }
 
     .MuiListItemText-root {
-      display: none;
+      opacity: 0;
     }
   }
 
-  .MuiDrawer-paper {
-    width: inherit;
-    background-color: #1e1e2d;
-    color: white;
-  }
   .sidebar-logo {
     display: flex;
-    justify-content: center;
     align-items: center;
-    // padding: 1.5rem 0;
-    height: 30%;    
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: white;
-
+    justify-content: space-between;
+    padding: 24px;
+    height: 80px;
+    
     .titre-site {
-      font-size: 2rem;
-      font-weight: bold;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin: 0;
+      background: linear-gradient(45deg, #00e5ff, #ff4081);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: opacity 0.3s;
     }
-    .left-icons {
-      font-size: 24px;
-      color: white;
-      font-weight: bold;
-      // padding: 0 1px;
-      position: relative;
-      left: 1.8rem;
+
+    .toggle-button {
       cursor: pointer;
-      :hover {
-        background-color: gray;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.2rem;
+      transition: color 0.2s;
+      &:hover {
+        color: #00e5ff;
       }
     }
   }
@@ -61,42 +61,64 @@
   .content-item-bar {
     display: flex;
     flex-direction: column;
-    height: 70%;
-
-    .css-b7dj7n-MuiList-root{
-      padding: 0!important;
-    }
-    .css-rizt0-MuiTypography-root{
-      line-height: 0;
-    }
+    height: calc(100% - 80px);
+    padding: 12px;
 
     .sidebar-nav {
-      flex-grow: 1;
-      .sidebar-nav-item {
-        color: gray;
-        display: flex;
-        // align-items: center;
-        // padding: 0.5rem;
-        // font-size: 1rem; /* Taille du texte */
-        border-radius: 0.375rem; /* Coins arrondis */
-        transition: all 0.3s ease;
+      flex: 1;
+      
+      .MuiListItemButton-root {
+        border-radius: 12px;
+        margin-bottom: 4px;
+        padding: 12px 16px;
+        transition: all 0.2s;
+        
         &:hover {
-          background-color: #4a5568;
+          background: rgba(255, 255, 255, 0.05);
+          .MuiListItemIcon-root {
+            color: #00e5ff;
+          }
+        }
+
+        &.Mui-selected {
+          background: rgba(0, 229, 255, 0.1);
+          color: #00e5ff;
+          .MuiListItemIcon-root {
+            color: #00e5ff;
+          }
+        }
+      }
+
+      .MuiListItemIcon-root {
+        color: rgba(255, 255, 255, 0.6);
+        min-width: 48px;
+        transition: color 0.2s;
+      }
+
+      .MuiListItemText-root {
+        transition: opacity 0.3s;
+        span {
+          font-weight: 600;
+          font-size: 0.95rem;
         }
       }
     }
+
     .logout-button {
-      text-align: center;
-      color: white;
-      cursor: pointer;
-      &:hover {
-        background-color: red;
+      margin-top: auto;
+      border-radius: 12px;
+      
+      .MuiListItemButton-root {
+        border-radius: 12px;
+        color: rgba(255, 255, 255, 0.6);
+        &:hover {
+          background: rgba(255, 64, 129, 0.1);
+          color: #ff4081;
+          .MuiListItemIcon-root {
+            color: #ff4081;
+          }
+        }
       }
     }
   }
-}
-.offsidebar {
-  width: 1vw;
-  height: 100vh;
-  cursor: pointer;
 }

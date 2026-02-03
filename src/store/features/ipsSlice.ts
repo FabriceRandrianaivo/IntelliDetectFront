@@ -81,7 +81,7 @@ export const updateIpStatus = createAsyncThunk(
   "collection/updateIp",
   async (payload: IpUpdateType, { rejectWithValue }) => {
     try {
-      await authService.put(`collections/${payload.collection_id}/ips/${payload.id}`, payload);
+      await authService.put(`/collection/${payload.collection_id}/ips/${payload.id}`, payload);
       return payload;
     } catch (e) {
       if (isAxiosError(e)) {
