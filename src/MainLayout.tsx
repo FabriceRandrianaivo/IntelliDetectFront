@@ -5,15 +5,28 @@ import { useState } from "react";
 import React from "react";
 
 function App() {
-  const token = Cookies.get("user");
   const [isOpenBar, setIsOpenBar] = useState<boolean>(false);
 
-  if (!token) return <Navigate to="/login" />;
-
   return (
-    <div className="m-app">
+    <div
+      className="m-app"
+      style={{
+        display: "flex",
+        width: "100vw",
+        height: "100vh",
+        overflow: "hidden",
+      }}
+    >
       <SideBar isOpenBar={isOpenBar} setIsOpenBar={setIsOpenBar} />
-      <div className="m-principle">
+      <div
+        className="m-principle"
+        style={{
+          flexGrow: 1,
+          height: "100%",
+          overflowY: "auto",
+          backgroundColor: "#0a1929",
+        }}
+      >
         <Outlet />
       </div>
     </div>

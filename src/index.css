@@ -22,12 +22,18 @@ a:hover {
   color: #535bf2;
 }
 
+html,
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
   min-width: 320px;
-  min-height: 100vh;
+  background-color: #0a1929; /* Sync with theme default background */
 }
 
 h1 {
