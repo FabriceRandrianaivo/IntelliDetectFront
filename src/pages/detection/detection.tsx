@@ -74,7 +74,7 @@ const Detection: React.FC = () => {
                 <Box sx={{ position: "relative" }}>
                   <CardMedia
                     component="img"
-                    image={`${API_BASE_URL}/stream/from-ip/${encodeURIComponent(item.ip_address)}/?bearer=${token}`}
+                    image={`${API_BASE_URL}/stream/from-ip/${encodeURIComponent(item.ip_address)}?bearer=${token}`}
                     alt={`Camera ${item.ip_address}`}
                     sx={{
                       aspectRatio: "16/9",
