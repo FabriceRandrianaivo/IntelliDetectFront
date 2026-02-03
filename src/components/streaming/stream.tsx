@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Cookies from "js-cookie";
 
 const VideoStream: React.FC = () => {
   const token = Cookies.get("user");
   const [isStreaming, setIsStreaming] = useState<boolean>(false);
-  const [isYolo,setIsYolo] = useState<boolean>(false);
 
   // const [error, setError] = useState<string | null>(null);
   // const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -13,19 +12,19 @@ const VideoStream: React.FC = () => {
   const handleStartStreaming = () => {
     setIsStreaming(true);
     if (imgRef.current) {
-      imgRef.current.src = `http://localhost:8000/stream/video_feed?bearer=${token}`;  // Arrête l'affichage du flux
+      imgRef.current.src = `http://localhost:8000/stream/video_feed?bearer=${token}`; // Arrête l'affichage du flux
     }
   };
 
   const handleStopStreaming = () => {
     setIsStreaming(false);
     if (imgRef.current) {
-      imgRef.current.src = "";  // Arrête l'affichage du flux
+      imgRef.current.src = ""; // Arrête l'affichage du flux
     }
   };
 
   return (
-    <div >
+    <div>
       <h1>Flux vidéo en direct</h1>
       <div>
         <button onClick={handleStartStreaming} disabled={isStreaming}>
@@ -37,11 +36,11 @@ const VideoStream: React.FC = () => {
       </div>
       {/* {isLoading && <p>Chargement du flux vidéo...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>} */}
-        <img
-          ref={imgRef}
-          alt="Flux vidéo"
-          style={{ width: "600px", height:"400px", border: "2px solid #333" }}
-        />
+      <img
+        ref={imgRef}
+        alt="Flux vidéo"
+        style={{ width: "600px", height: "400px", border: "2px solid #333" }}
+      />
     </div>
   );
 };

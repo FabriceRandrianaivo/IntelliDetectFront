@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError, isAxiosError } from "axios";
 import authService from "../../services/authentication/authenticationService";
 import { RootState } from "../store";
-const isCookies = import.meta.env.VITE_IS_COOKIES;
 
 export interface IpType {
   is_active: boolean;
@@ -206,7 +205,7 @@ export const IpsSlice = createSlice({
     });
     builder.addCase(deleteIp.fulfilled, (state, action) => {
       state.items = state.items.filter(
-        (item) => item.id !== action.payload?.ip_id
+        (item) => item.id !== action.payload?.payload.ip_id
       );
     });
   },

@@ -34,7 +34,7 @@ export const StreamSlice = createSlice({
   name: "stream",
   initialState,
   reducers: {
-    setIsConnectStream: (state, action) => {
+    setIsConnectStream: (state, _action) => {
       state.isConnect = true;
     },
   },

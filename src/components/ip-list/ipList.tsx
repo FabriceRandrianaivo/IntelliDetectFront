@@ -1,20 +1,22 @@
 import Cookies from "js-cookie";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { deleteIp, fetchIP, setActiveIp, setActiveIps } from "../../store/features/ipsSlice";
+import { deleteIp, fetchIP, setActiveIps } from "../../store/features/ipsSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchCollection } from "../../store/features/collectionSlice";
 
 export function IpList() {
-  const activeIndexCollection = useAppSelector((state) => state.collection.activeIndex);
-  const collectionItems = useAppSelector((state) => state.collection.items)
-  const collectionActive = collectionItems[activeIndexCollection ? activeIndexCollection : 0];
+  const activeIndexCollection = useAppSelector(
+    (state) => state.collection.activeIndex,
+  );
+  const collectionItems = useAppSelector((state) => state.collection.items);
+  const collectionActive =
+    collectionItems[activeIndexCollection ? activeIndexCollection : 0];
 
   const IpListAddress = useAppSelector((state) => state.ip.items);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const token = Cookies.get("user");
-
 
   const handleGetCollection = async () => {
     try {
@@ -22,30 +24,23 @@ export function IpList() {
     } catch (e) {
       console.error("une erreur est suvenue :" + e);
     }
-  }
-  useEffect(() => {
-    collectionItems.length === 0 && handleGetCollection()
-  }, [])
-
-  useEffect(() => {
-    dispatch(fetchIP(collectionActive.id))
-  }, [])
-
-  useEffect(() => {
-    dispatch(fetchIP(collectionActive.id))
-  }, [activeIndexCollection])
-
-  const getStreamUrl = (ip: string) => {
-    return `http://localhost:8000/stream/from-ip/${ip}?bearer=${token}`; // ou ton URL déployée
   };
+  useEffect(() => {
+    collectionItems.length === 0 && handleGetCollection();
+  }, []);
 
+  useEffect(() => {
+    dispatch(fetchIP(collectionActive.id));
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchIP(collectionActive.id));
+  }, [activeIndexCollection]);
 
   return (
     <div className="b_list">
       {IpListAddress.length === 0 ? (
-        <div className="b_card-list">
-          Il n'y a pas d'IP dans la collection
-        </div>
+        <div className="b_card-list">Il n'y a pas d'IP dans la collection</div>
       ) : (
         IpListAddress.map((ip, key) => (
           <div
@@ -53,7 +48,7 @@ export function IpList() {
             key={key}
             onClick={(e) => {
               if (e.detail === 1) {
-                console.log(ip)
+                console.log(ip);
                 navigate(`/stream`);
                 // navigate(`/stream/${ip.collection_id}/${ip.id}`);
                 // dispatch(setActiveIps(ip.ip_address)); // ou `ip.id` selon ton slice
@@ -70,7 +65,10 @@ export function IpList() {
                 {/* {ip.ip_address} */}
               </div>
               <div className="ip_content-list">
-                <img src={`http://localhost:8000/stream/from-ip/${ip.ip_address}/?bearer=${token}`} alt={`Camera ${key + 1} erreur`} />  
+                <img
+                  src={`http://localhost:8000/stream/from-ip/${ip.ip_address}/?bearer=${token}`}
+                  alt={`Camera ${key + 1} erreur`}
+                />
               </div>
               {/* <CircleX /> */}
             </div>
@@ -82,15 +80,15 @@ export function IpList() {
                 <div className="b_right">
                   <p
                     onClick={(e) => {
-                      e.stopPropagation();// évite de déclencher onClick du parent
+                      e.stopPropagation(); // évite de déclencher onClick du parent
                       console.log("delete");
                       const payload = {
                         collection_id: ip.collection_id,
-                        ip_id: ip.id
-                      }
-                      dispatch(deleteIp(payload)).then(
-                        () => dispatch(fetchIP(collectionActive.id))
-                      )
+                        ip_id: ip.id,
+                      };
+                      dispatch(deleteIp(payload)).then(() =>
+                        dispatch(fetchIP(collectionActive.id)),
+                      );
                     }}
                   >
                     Révoquer

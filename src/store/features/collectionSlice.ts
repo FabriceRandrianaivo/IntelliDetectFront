@@ -3,7 +3,6 @@ import { AxiosError, isAxiosError } from "axios";
 // import { ToastContextType } from "../../context/toastContext";
 import authService from "../../services/authentication/authenticationService";
 import { RootState } from "../store";
-const isCookies = import.meta.env.VITE_IS_COOKIES;
 
 export interface PayloadCollectionUpload {
   payload: {
@@ -34,6 +33,7 @@ export interface CollectionItem {
   // collection_files?: FileType[];
   collection_ips?: string[];
   is_private: boolean;
+  created_at?: string;
 }
 export interface CollectionState {
   items: CollectionItem[];

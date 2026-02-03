@@ -9,38 +9,41 @@ import DrawerCollection from "../../components/collection/drawerCollection";
 
 const Collection: React.FC = () => {
   const dispatch = useAppDispatch();
-  const [isNewCollection, setIsNewCollection] = useState<boolean>(false)
-  const onClose=()=>{
-    setIsNewCollection(false)
-  }
+  const [isNewCollection, setIsNewCollection] = useState<boolean>(false);
+  const onClose = () => {
+    setIsNewCollection(false);
+  };
   const handleGetCollection = async () => {
     try {
       await dispatch(fetchCollection());
     } catch (e) {
       console.error("une erreur est suvenue :" + e);
     }
-  }
+  };
   useEffect(() => {
     handleGetCollection();
-  }, [])
+  }, []);
   return (
     <>
       <div className="wrapper-section">
         <div className={"b-section-left"}>
           {/* <div className={isNewCollection ? "reduce-section" : "b-section-left"}> */}
           <HeadSection title="Collection List" />
-          <button onClick={() => {
-            setIsNewCollection(true);
-            console.log("create collection");
-          }} className="create-new">
+          <button
+            onClick={() => {
+              setIsNewCollection(true);
+              console.log("create collection");
+            }}
+            className="create-new"
+          >
             <span>Créer nouveau</span>
             {/* <Plus className="plus" /> */}
             <CiCirclePlus />
           </button>
           <CollectionList />
-        {
-          isNewCollection == true && <DrawerCollection entry={"Create"} onClose={onClose}  onCreateClick={onClose}/>
-        }
+          {isNewCollection == true && (
+            <DrawerCollection entry={"Create"} onClose={onClose} />
+          )}
         </div>
         {/* <div className="b-section-center">
       <div className="b-new-bot">
@@ -50,5 +53,5 @@ const Collection: React.FC = () => {
       </div>
     </>
   );
-}
+};
 export default Collection;

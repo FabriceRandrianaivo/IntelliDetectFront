@@ -1,0 +1,13 @@
+﻿src/components/collection/collectionList.tsx(44,49): error TS2339: Property 'created_at' does not exist on type 'CollectionItem'.
+src/components/ip-list/ip-list-address.tsx(13,9): error TS6133: 'token' is declared but its value is never read.
+src/components/ip-list/ip-list-address.tsx(18,9): error TS6133: 'addIp' is declared but its value is never read.
+src/components/ip-list/ip-list-address.tsx(36,24): error TS6133: 'originalPromiseResult' is declared but its value is never read.
+src/components/ip-list/ipList.tsx(3,29): error TS2724: '"../../store/features/ipsSlice"' has no exported member named 'setActiveIp'. Did you mean 'setActiveIps'?
+src/components/ip-list/ipList.tsx(3,29): error TS6133: 'setActiveIp' is declared but its value is never read.
+src/components/ip-list/ipList.tsx(38,9): error TS6133: 'getStreamUrl' is declared but its value is never read.
+src/components/streaming/stream.tsx(1,17): error TS6133: 'useEffect' is declared but its value is never read.
+src/components/streaming/stream.tsx(7,10): error TS6133: 'isYolo' is declared but its value is never read.
+src/components/streaming/stream.tsx(7,17): error TS6133: 'setIsYolo' is declared but its value is never read.
+src/main.tsx(1,1): error TS6133: 'StrictMode' is declared but its value is never read.
+src/pages/collection/collection.tsx(42,92): error TS2322: Type '{ entry: string; onClose: () => void; onCreateClick: () => void; }' is not assignable to type 'IntrinsicAttributes & SidePanelProps'.
+  Property 'onCreateClick' does not exist on type 'IntrinsicAttributes & SidePanelProps'.

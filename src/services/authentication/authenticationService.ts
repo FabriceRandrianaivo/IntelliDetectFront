@@ -47,7 +47,7 @@ authService.interceptors.response.use(
 
 const handleLogout = () => {
   isLogoutInProgress = true;
-  const toastId = toast.loading(
+  toast.loading(
     "Votre session est expirée, déconnexion en cours...",
     {
       position: "top-center",
